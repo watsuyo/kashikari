@@ -13,13 +13,10 @@
     "sourceMap": true,
     "strict": true,
     "noEmit": true,
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
       "~/*": [
-        "src/*"
-      ],
-      "@/*": [
-        "src/*"
+        ".src/*"
       ]
     },
     "types": [
@@ -27,6 +24,17 @@
       "@nuxt/types"
     ]
   },
+  "files": [
+    "shims-vue.d.ts"
+  ],
+  "include": [
+    "components/**/*.ts",
+    "components/**/*.vue",
+    "layouts/**/*.ts",
+    "layouts/**/*.vue",
+    "pages/**/*.ts",
+    "pages/**/*.vue"
+  ],
   "exclude": [
     "node_modules"
   ]
