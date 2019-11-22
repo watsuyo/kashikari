@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <nuxt />
+    <nuxt class="nuxt" />
   </div>
 </template>
 
@@ -17,8 +17,11 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-div{
+div {
   font-family: $base-font;
 }
 
+.nuxt {
+  margin-top: $header-height;
+}
 </style>
