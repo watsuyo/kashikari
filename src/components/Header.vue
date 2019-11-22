@@ -9,19 +9,10 @@
       <nav :class="{drawer__menu: !showDrawer}">
         <div class="header__contents">
           <div class="header__content">
-            Top
+            アイテム一覧
           </div>
           <div class="header__content">
-            Abouts
-          </div>
-          <div class="header__content">
-            Skils
-          </div>
-          <div class="header__content">
-            Works
-          </div>
-          <div class="header__content">
-            Contacts
+            出品する
           </div>
         </div>
       </nav>

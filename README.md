@@ -1,6 +1,6 @@
-# myPortfolio
+# kashikari
 
-> Tsuyoshi Hirosawa&#39;s Portfolio
+> kashikari
 
 ## Build Setup
 
