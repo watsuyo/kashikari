@@ -24,6 +24,16 @@ const config: Configuration = {
   */
   loading: { color: '#fff' },
 
+  env: {
+    FIREBASE_API_KEY: 'AIzaSyBsUyYDJ8KbroNLDCJ9O5szouFkxbBWUWI',
+    FIREBASE_AUTH_DOMAIN: 'kashika-dev.firebaseapp.com',
+    FIREBASE_DATABASE_URL: 'https://kashika-dev.firebaseio.com',
+    FIREBASE_PROJECT_ID: 'kashika-dev',
+    FIREBASE_STORAGE_BUCKET: 'kashika-dev.appspot.com',
+    FIREBASE_MESSAGING_SENDER_ID: '157068636104',
+    FIREBASE_APP_ID: '1:157068636104:web:c2210f4f9c2ffeff3adafd'
+  },
+
   /*
   ** Nuxt.js modules
   */

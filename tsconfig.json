@@ -16,7 +16,10 @@
     "baseUrl": ".",
     "paths": {
       "~/*": [
-        ".src/*"
+        "./src/*"
+      ],
+      "@/*": [
+        "./src/*"
       ]
     },
     "types": [
@@ -28,12 +31,8 @@
     "shims-vue.d.ts"
   ],
   "include": [
-    "components/**/*.ts",
-    "components/**/*.vue",
-    "layouts/**/*.ts",
-    "layouts/**/*.vue",
-    "pages/**/*.ts",
-    "pages/**/*.vue"
+    "src/**/*.ts",
+    "src/**/*.vue"
   ],
   "exclude": [
     "node_modules"
