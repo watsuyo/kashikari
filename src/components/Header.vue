@@ -8,10 +8,10 @@
       <label class="drawer__overlay" for="drawerCheckbox" />
       <nav :class="{drawer__menu: !showDrawer}">
         <div class="header__contents">
-          <div class="header__content" @click="toItems">
+          <div class="header__content" @click="$router.push('/items')">
             アイテム一覧
           </div>
-          <div class="header__content" @click="toPost">
+          <div class="header__content" @click="$router.push('/post')">
             出品する
           </div>
         </div>
@@ -40,14 +40,6 @@ export default Vue.extend({
     calculateWindowWidth () {
       this.windowWidth = window.innerWidth
       this.showDrawer = this.windowWidth > 1180
-    },
-
-    toItems () {
-      this.$router.push('/items')
-    },
-
-    toPost () {
-      this.$router.push('/post')
     }
   }
 })
