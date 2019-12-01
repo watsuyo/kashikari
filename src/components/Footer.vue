@@ -1,13 +1,20 @@
 <template>
-  <div class="header-wrapper">
-    <div class="header">
-      <nav>
-        <div class="header__contents">
-          <div class="header__content">
-            {{ title }}
-          </div>
+  <div class="footer-wrapper">
+    <div class="footer">
+      <div class="footer__contents">
+        <div class="footer__content" @click="$router.push('/items')">
+          借りる
         </div>
-      </nav>
+        <div class="footer__content" @click="$router.push('/post')">
+          貸す
+        </div>
+        <div class="footer__content" @click="$router.push('/items')">
+          リスト
+        </div>
+        <div class="footer__content" @click="$router.push('/items')">
+          マイページ
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -15,12 +22,6 @@
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-  props: {
-    title: {
-      default: '',
-      type: String
-    }
-  },
   data () {
     return {
       windowWidth: 0,
@@ -42,52 +43,46 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 @media (min-width:1180px) {
-  .header-wrapper {
+  .footer-wrapper {
     min-height: $header-height;
     display: block;
   }
 
-  .header {
+  .footer {
     position: fixed;
     text-align: center;
     width: 100%;
+    bottom: 0;
     height: $header-height;
-    top: 0;
-    left: 0;
 
     &__contents {
       position: absolute;
-      padding: 30px 0;
+      display: flex;
+      justify-content: space-evenly;
       width: 100%;
     }
   }
 }
 
 @media (max-width:1180px) {
-  .header-wrapper {
+  .footer-wrapper {
     min-height: $header-height;
     display: block;
   }
 
-  .header {
+  .footer {
     position: fixed;
     text-align: center;
     width: 100%;
     height: $header-height;
-    top: 0;
+    bottom: 0;
     left: 0;
-    z-index: 100;
 
     &__contents {
       position: absolute;
-      padding: 30px 0;
+      display: flex;
+      justify-content: space-evenly;
       width: 100%;
-
-      &::after{
-        clear: both;
-        content: '';
-        display: block;
-      }
     }
   }
 }
