@@ -12,6 +12,7 @@ export interface UserData {
     streetAddress: string
     extendedAddress: string
   }
+  userIconImageurl: string
   createdAt: firebase.firestore.Timestamp
   updatedAt: firebase.firestore.Timestamp
 }
@@ -23,6 +24,7 @@ export interface ItemData {
   subImageUrls: string[]
   price: number
   status: number
+  userRef: firebase.firestore.DocumentReference
   createdAt: firebase.firestore.Timestamp
   updatedAt: firebase.firestore.Timestamp
 }

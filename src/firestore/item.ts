@@ -1,9 +1,13 @@
 import { Firestore } from '~/plugins/firebase'
 import { Item } from '~/types/store/item'
 import { ItemData, DocumentSnapshot } from '~/types/firestore'
+import { UserData } from '~/types/firestore/index'
 
 async function buildItemObject (itemDoc: DocumentSnapshot): Promise<Item> {
   const itemData = await itemDoc.data() as ItemData
+  const userDoc = await itemData.userRef.get()
+  const userData = userDoc.data() as UserData
+
   return {
     id: itemDoc.id,
     name: itemData.name,
@@ -11,6 +15,7 @@ async function buildItemObject (itemDoc: DocumentSnapshot): Promise<Item> {
     mainImageUrl: itemData.mainImageUrl,
     subImageUrls: itemData.subImageUrls,
     price: itemData.price,
+    user: userData,
     status: itemData.status,
     createdAt: itemData.createdAt,
     updatedAt: itemData.updatedAt
