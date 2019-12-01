@@ -11,30 +11,21 @@ import Vue from 'vue'
 import Header from '~/components/Header.vue'
 import Footer from '~/components/Footer.vue'
 
-interface LocalData {
-  titleList: string[]
-}
-
 export default Vue.extend({
   components: {
     Header,
     Footer
   },
 
-  data () {
-    return {
-      titleList: [
-        '借りる',
-        '貸す',
-        'リスト',
-        'マイページ'
-      ]
-    }
-  },
-
   computed: {
-    title (): string {
-      return '借りる'
+    title () {
+      if (this.$route.name === 'items') {
+        return '借りる'
+      } else if (this.$route.name === 'post') {
+        return '貸す'
+      }
+
+      return !this.$route.name && ''
     }
   }
 })
