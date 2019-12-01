@@ -1,5 +1,5 @@
 import firebase from 'firebase'
-// import { Brand } from '~/types/store/brand'
+import { UserData } from '../firestore/index'
 
 export interface Item {
   id: string
@@ -8,6 +8,7 @@ export interface Item {
   mainImageUrl: string
   subImageUrls: string[]
   price: number
+  user: UserData
   status: number
   createdAt?: firebase.firestore.Timestamp
   updatedAt?: firebase.firestore.Timestamp
