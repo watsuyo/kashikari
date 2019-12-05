@@ -1,19 +1,17 @@
 <template>
-  <div class="footer-wrapper">
-    <div class="footer">
-      <div class="footer__contents">
-        <div class="footer__content" @click="$router.push('/items')">
-          借りる
-        </div>
-        <div class="footer__content" @click="$router.push('/post')">
-          貸す
-        </div>
-        <div class="footer__content" @click="$router.push('/items')">
-          リスト
-        </div>
-        <div class="footer__content" @click="$router.push('/items')">
-          マイページ
-        </div>
+  <div class="footer">
+    <div class="footer__contents">
+      <div @click="$router.push('/items')">
+        借りる
+      </div>
+      <div @click="$router.push('/post')">
+        貸す
+      </div>
+      <div @click="$router.push('/items')">
+        リスト
+      </div>
+      <div @click="$router.push('/items')">
+        マイページ
       </div>
     </div>
   </div>
@@ -50,6 +48,7 @@ export default Vue.extend({
 
   .footer {
     position: fixed;
+    vertical-align: middle;
     text-align: center;
     width: 100%;
     bottom: 0;
@@ -65,13 +64,9 @@ export default Vue.extend({
 }
 
 @media (max-width:1180px) {
-  .footer-wrapper {
-    min-height: $header-height;
-    display: block;
-  }
-
   .footer {
     position: fixed;
+    display: flex;
     text-align: center;
     width: 100%;
     height: $header-height;
@@ -82,6 +77,7 @@ export default Vue.extend({
       position: absolute;
       display: flex;
       justify-content: space-evenly;
+      bottom: 20px;
       width: 100%;
     }
   }

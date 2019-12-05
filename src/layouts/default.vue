@@ -8,8 +8,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import Header from '~/components/Header.vue'
-import Footer from '~/components/Footer.vue'
+import Header from '~/components/organisms/Header.vue'
+import Footer from '~/components/organisms/Footer.vue'
 
 export default Vue.extend({
   components: {
@@ -23,9 +23,11 @@ export default Vue.extend({
         return '借りる'
       } else if (this.$route.name === 'post') {
         return '貸す'
+      } else if (this.$route.name === 'items-itemId') {
+        return '詳細'
+      } else {
+        return ''
       }
-
-      return !this.$route.name && ''
     }
   }
 })
