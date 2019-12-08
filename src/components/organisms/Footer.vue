@@ -40,46 +40,21 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-@media (min-width:1180px) {
-  .footer-wrapper {
-    min-height: $header-height;
-    display: block;
-  }
+.footer {
+  position: fixed;
+  display: flex;
+  text-align: center;
+  width: 100%;
+  height: $header-height;
+  bottom: 0;
+  left: 0;
 
-  .footer {
-    position: fixed;
-    vertical-align: middle;
-    text-align: center;
-    width: 100%;
-    bottom: 0;
-    height: $header-height;
-
-    &__contents {
-      position: absolute;
-      display: flex;
-      justify-content: space-evenly;
-      width: 100%;
-    }
-  }
-}
-
-@media (max-width:1180px) {
-  .footer {
-    position: fixed;
+  &__contents {
+    position: absolute;
     display: flex;
-    text-align: center;
+    justify-content: space-evenly;
+    bottom: 20px;
     width: 100%;
-    height: $header-height;
-    bottom: 0;
-    left: 0;
-
-    &__contents {
-      position: absolute;
-      display: flex;
-      justify-content: space-evenly;
-      bottom: 20px;
-      width: 100%;
-    }
   }
 }
 </style>

@@ -41,53 +41,29 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-@media (min-width:1180px) {
-  .header-wrapper {
-    min-height: $header-height;
-    display: block;
-  }
-
-  .header {
-    position: fixed;
-    text-align: center;
-    width: 100%;
-    height: $header-height;
-    top: 0;
-    left: 0;
-
-    &__contents {
-      position: absolute;
-      padding: 30px 0;
-      width: 100%;
-    }
-  }
+.header-wrapper {
+  min-height: $header-height;
+  display: block;
 }
 
-@media (max-width:1180px) {
-  .header-wrapper {
-    min-height: $header-height;
-    display: block;
-  }
+.header {
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  height: $header-height;
+  top: 0;
+  left: 0;
+  z-index: 100;
 
-  .header {
-    position: fixed;
-    text-align: center;
+  &__contents {
+    position: absolute;
+    padding: 30px 0;
     width: 100%;
-    height: $header-height;
-    top: 0;
-    left: 0;
-    z-index: 100;
 
-    &__contents {
-      position: absolute;
-      padding: 30px 0;
-      width: 100%;
-
-      &::after{
-        clear: both;
-        content: '';
-        display: block;
-      }
+    &::after{
+      clear: both;
+      content: '';
+      display: block;
     }
   }
 }
