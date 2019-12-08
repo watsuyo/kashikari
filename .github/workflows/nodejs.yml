@@ -41,9 +41,9 @@ jobs:
       - name: Slack notification
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_USERNAME: ThisIsMyUsername # Optional.
-          SLACK_CHANNEL: general # Optional.
-          SLACK_OVERRIDE_MESSAGE: 'Custom message' # Optional.
+          SLACK_USERNAME: デプロイ完了Bot # Optional.
+          SLACK_CHANNEL: feed # Optional.
+          SLACK_OVERRIDE_MESSAGE: 'Develop環境へのデプロイが正常に完了しました' # Optional.
         uses: Ilshidur/action-slack@master
         with:
           args: 'A new commit has been pushed.'
