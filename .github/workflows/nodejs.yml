@@ -33,6 +33,8 @@ jobs:
           SLACK_CHANNEL: feed # Optional.
           SLACK_OVERRIDE_MESSAGE: 'Deploy Start' # Optional.
         uses: Ilshidur/action-slack@master
+        with:
+          args: 'A new commit has been pushed.'
       - name: Checkout Repo
         uses: actions/checkout@master
       - name: Download Artifact
