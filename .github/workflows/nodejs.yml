@@ -26,6 +26,13 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Slack notification
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: Deploy Bot # Optional.
+          SLACK_CHANNEL: feed # Optional.
+          SLACK_OVERRIDE_MESSAGE: 'Deploy Start' # Optional.
+        uses: Ilshidur/action-slack@master
       - name: Checkout Repo
         uses: actions/checkout@master
       - name: Download Artifact
@@ -41,9 +48,9 @@ jobs:
       - name: Slack notification
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_USERNAME: デプロイ完了Bot # Optional.
+          SLACK_USERNAME: Deploy Start # Optional.
           SLACK_CHANNEL: feed # Optional.
-          SLACK_OVERRIDE_MESSAGE: 'Develop環境へのデプロイが正常に完了しました' # Optional.
+          SLACK_OVERRIDE_MESSAGE: 'Deploy Finish' # Optional.
         uses: Ilshidur/action-slack@master
         with:
           args: 'A new commit has been pushed.'
