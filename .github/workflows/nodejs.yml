@@ -2,7 +2,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - master
+      - develop
 
 jobs:
   build:
@@ -20,6 +20,7 @@ jobs:
         with:
           name: dist
           path: dist
+
   deploy:
     name: Deploy
     needs: build
@@ -37,3 +38,13 @@ jobs:
           args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - name: Slack notification
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: ThisIsMyUsername # Optional.
+          SLACK_CHANNEL: general # Optional.
+          SLACK_OVERRIDE_MESSAGE: 'Custom message' # Optional.
+        uses: Ilshidur/action-slack@master
+        with:
+          args: 'A new commit has been pushed.'
+
