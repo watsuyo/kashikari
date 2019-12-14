@@ -82,6 +82,9 @@ const config: Configuration = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/firebase.ts',
+    '~/plugins/environments.ts',
+    '~/plugins/filters.ts'
   ],
   /*
   ** Nuxt.js dev-modules

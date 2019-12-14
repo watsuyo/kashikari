@@ -34,6 +34,9 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+html {
+  width: 100%;
+}
 div {
   font-family: $base-font;
 }
