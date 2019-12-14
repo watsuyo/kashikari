@@ -3,7 +3,7 @@
     <div v-for="(item , key) in items" :key="key" class="items">
       <div class="item" @click="$router.push(`items/${item.id}`)">
         <div class="item__user">
-          <img :src="item.user.userIconImageurl" class="item__user__img">
+          <img :src="item.user.userIconImageUrl" class="item__user__img">
           <div>{{ item.user.lastName }} {{ item.user.firstName }}</div>
         </div>
         <img :src="item.mainImageUrl">
