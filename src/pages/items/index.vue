@@ -1,17 +1,21 @@
 <template>
   <div>
-    <div v-for="(item , key) in items" :key="key" class="items">
-      <div class="item" @click="$router.push(`items/${item.id}`)">
-        <div class="item__user">
-          <img :src="item.user.userIconImageUrl" class="item__user__img">
-          <div>{{ item.user.lastName }} {{ item.user.firstName }}</div>
-        </div>
-        <img :src="item.mainImageUrl">
-        <div class="item__name">
-          {{ item.name }}
-        </div>
-        <div class="item__price">
-          {{ item.price }}/泊
+    <div class="items-wrapper">
+      <div v-for="(item , key) in items" :key="key" class="items">
+        <div class="item" @click="$router.push(`items/${item.id}`)">
+          <div class="item__user">
+            <Img :img-url="item.user.userIconImageUrl" icon-xs />
+            <div class="item__user__name">
+              {{ item.user.lastName }} {{ item.user.firstName }}
+            </div>
+          </div>
+          <Img :img-url="item.mainImageUrl" item-l />
+          <div class="item__name">
+            {{ item.name | truncate }}
+          </div>
+          <div class="item__price">
+            {{ item.price | notation }}/泊
+          </div>
         </div>
       </div>
     </div>
@@ -20,13 +24,19 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import Img from '~/components/atoms/Img.vue'
+
 export default Vue.extend({
+  components: {
+    Img
+  },
 
   computed: {
     items () {
       return this.$store.getters['item/all']
     }
   },
+
   async asyncData ({ store }) {
     await store.dispatch('item/fetchItems')
   }
@@ -34,12 +44,23 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+.item__user {
+  top: 50%;
+
+  &__name{
+    padding: 4px;
+  }
+}
+
 .items {
   width: 50%;
   display: inline-block;
 }
 
 .item {
+  padding: 0 8px;
+  margin-bottom: 16px;
+  width: 160px;
   &__name {
     text-align: left;
   }
@@ -49,11 +70,6 @@ export default Vue.extend({
 
   &__user {
     display: flex;
-
-    &__img {
-      width: 30%;
-      object-fit: cover;
-    }
   }
 }
 </style>
