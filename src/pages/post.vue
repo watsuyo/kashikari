@@ -14,7 +14,7 @@
         <div class="itemInfo__category">
           カテゴリ
         </div>
-        <Select items="categoryList"></Select>
+        <Select v-bind:object="category"></Select>
       </div>
 
       <Divider section />
@@ -111,12 +111,15 @@ export default Vue.extend({
   },
   data () {
     return {
-      categoryList: [
-        {
-          name: 'test',
-          value: 'テスト'
-        }
-      ]
+      category: {
+        name: 'category',
+        items: [
+          {
+            name: 'test',
+            value: 'テスト'
+          }
+        ]
+      }
     }
   }
 })

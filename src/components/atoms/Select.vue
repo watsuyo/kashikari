@@ -1,8 +1,8 @@
 <template>
-    <select>
+    <select v-bind:name="object.name">
       <option disabled="disabled" selected="selected">選択してください</option>
       <option
-        v-for="(item, index) in items"
+        v-for="(item, index) in object.items"
         v-bind:key="index"
         v-bind:value="item.name">{{ item.value }}</option>
     </select>
@@ -12,14 +12,19 @@
 import Vue, { PropType } from 'vue'
 
 export type Item = {
-    name: String,
-    value: String
+  inlineName: String,
+  value: String
+};
+
+export type Select = {
+  name: String,
+  items: Array<Item[]>
 }
 
 export default Vue.extend({
   name: 'Select',
   props: {
-    items: Array as PropType<Item[]>
+    object: Object as PropType<Select>
   }
 })
 </script>
