@@ -14,7 +14,7 @@
         <div class="itemInfo__category">
           カテゴリ
         </div>
-        <input type="text" placeholder="入力してください">
+        <Select items="categoryList"></Select>
       </div>
 
       <Divider section />
@@ -32,7 +32,7 @@
         <div class="itemInfo__description">
           説明
         </div>
-        <input type="text" placeholder="入力してください">
+        <textarea placeholder="商品のブランドや色、状態などを書くと伝わりやすいです。"></textarea>
       </div>
 
       <Divider section />
@@ -41,7 +41,7 @@
         <div class="itemInfo__attention">
           注意事項(任意)
         </div>
-        <input type="text" placeholder="入力してください">
+        <textarea placeholder="気をつけて欲しいことや返却時の希望がある場合に記入してください。"></textarea>
       </div>
 
       <Divider section />
@@ -52,7 +52,8 @@
         <div class="itemOptionInfo__pass">
           渡し方
         </div>
-        <input type="text" placeholder="入力してください">
+        <input type="radio" name="deliveryMethod" value="手渡し" checked="checked">
+        <input type="radio" name="deliveryMethod" value="郵送">
       </div>
 
       <Divider section />
@@ -102,10 +103,21 @@
 import Vue from 'vue'
 import Button from '~/components/atoms/Button.vue'
 import Divider from '~/components/atoms/Divider.vue'
+import Select from '~/components/atoms/Select.vue'
 
 export default Vue.extend({
   components: {
-    Button, Divider
+    Button, Divider, Select
+  },
+  data () {
+    return {
+      categoryList: [
+        {
+          name: 'test',
+          value: 'テスト'
+        }
+      ]
+    }
   }
 })
 </script>
