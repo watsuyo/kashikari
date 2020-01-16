@@ -1,16 +1,16 @@
 <template>
   <div class="footer">
     <div class="footer__contents">
-      <div @click="$router.push('/items')">
+      <div @click="goto('/items')">
         借りる
       </div>
-      <div @click="$router.push('/post')">
+      <div @click="goto('/post')">
         貸す
       </div>
-      <div @click="$router.push('/items')">
+      <div @click="goto('/list')">
         リスト
       </div>
-      <div @click="$router.push('/items')">
+      <div @click="goto('/mypage')">
         マイページ
       </div>
     </div>
@@ -19,6 +19,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import Cookies from 'universal-cookie'
+
 export default Vue.extend({
   data () {
     return {
@@ -26,14 +28,27 @@ export default Vue.extend({
       showDrawer: false
     }
   },
+
+  computed: {
+    isCookie (): string {
+      const cookies = new Cookies()
+      return cookies.get('__session')
+    }
+  },
+
   mounted () {
     this.calculateWindowWidth()
     window.addEventListener('resize', this.calculateWindowWidth)
   },
+
   methods: {
     calculateWindowWidth () {
       this.windowWidth = window.innerWidth
       this.showDrawer = this.windowWidth > 1180
+    },
+
+    goto (to: string) {
+      this.$router.push(to)
     }
   }
 })

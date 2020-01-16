@@ -86,6 +86,11 @@ const config: Configuration = {
     '~/plugins/environments.ts',
     '~/plugins/filters.ts'
   ],
+
+  router: {
+    middleware: ['auth-check']
+  },
+
   /*
   ** Nuxt.js dev-modules
   */

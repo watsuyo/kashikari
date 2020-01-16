@@ -1,6 +1,27 @@
-import { Firestore } from '~/plugins/firebase'
+import { Firestore, Timestamp } from '~/plugins/firebase'
 import { User } from '~/types/store/user'
 import { UserData } from '~/types/firestore'
+
+/**
+ * ユーザー追加
+ *
+ * @param userId
+ * @param address
+ */
+export async function addUser (userId: string, email?: string | null) {
+  const docRef = Firestore.collection('users').doc(userId)
+  const doc = await docRef.get()
+  if (!doc.exists) {
+    // guestの場合userId以外は全てnullableであるため
+    return docRef.set({
+      email: email || '',
+      // name: name || '',
+      termVersion: 1,
+      createdAt: Timestamp.now(),
+      updatedAt: Timestamp.now()
+    })
+  }
+}
 
 /**
  * ユーザー取得

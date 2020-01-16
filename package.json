@@ -22,7 +22,8 @@
     "node-sass": "^4.13.0",
     "nuxt": "^2.0.0",
     "nuxt-webfontloader": "^1.1.0",
-    "sass-loader": "^8.0.0"
+    "sass-loader": "^8.0.0",
+    "universal-cookie": "^4.0.3"
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^0.3.4",
