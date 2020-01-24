@@ -8,6 +8,11 @@
     </template>
     <template v-else>
       ログイン中
+      <div>
+        <button @click="logout">
+          ログアウト
+        </button>
+      </div>
     </template>
   </div>
 </template>
@@ -27,6 +32,10 @@ export default Vue.extend({
   methods: {
     googleLogin () {
       this.$store.dispatch('auth/authUserWithGoogle')
+    },
+
+    logout () {
+      this.$store.dispatch('auth/signOut')
     }
   }
 })

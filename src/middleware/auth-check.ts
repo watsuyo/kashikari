@@ -1,9 +1,11 @@
+import { Middleware } from '@nuxt/types'
 import { Route } from 'vue-router'
-import { Context } from '@nuxt/types'
+import { Auth } from '~/plugins/firebase'
 
-export default ({ redirect, route }: Context) => {
-  console.log('ssssssssss', route,!isPublic(route))
-  return !isPublic(route) ? redirect('/login') : ''
+const middleware: Middleware = ({ route, redirect }) => {
+  Auth.onAuthStateChanged((user) => {
+    return !user && !isPublic(route) ? redirect('/login') : ''
+  })
 }
 
 /**
@@ -23,3 +25,4 @@ function isPublic (route: Route) {
     return false
   }
 }
+export default middleware
