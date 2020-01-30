@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+import { Item } from './item'
 
 export interface User {
   id: string
@@ -12,6 +13,9 @@ export interface User {
     streetAddress: string
     extendedAddress: string
   } | null
+  follows: User[]
+  itemFavorites: Item[]
+  userIconImageUrl: string
   createdAt: firebase.firestore.Timestamp
   updatedAt: firebase.firestore.Timestamp
 }
