@@ -12,23 +12,33 @@ export interface UserData {
     streetAddress: string
     extendedAddress: string
   }
-  userIconImageurl: string
-  createdAt: firebase.firestore.Timestamp
-  updatedAt: firebase.firestore.Timestamp
+  follows: DocumentReference[]
+  itemFavorites: DocumentReference[]
+  userIconImageUrl: string
+  createdAt: Timestamp
+  updatedAt: Timestamp
 }
 
 export interface ItemData {
   name: string
   description: string
+  atention: string
+  warranty: string
   mainImageUrl: string
   subImageUrls: string[]
   price: number
-  status: number
-  userRef: firebase.firestore.DocumentReference
-  createdAt: firebase.firestore.Timestamp
-  updatedAt: firebase.firestore.Timestamp
+  lateFee: number
+  lendingPeriod: number
+  isPublic: boolean
+  userRef: DocumentReference
+  deliveryMethodRefs: DocumentReference[]
+  categoryRef: DocumentReference
+  createdAt: Timestamp
+  updatedAt: Timestamp
 }
 
 export type QuerySnapshot = firebase.firestore.QuerySnapshot
 export type DocumentSnapshot = firebase.firestore.DocumentSnapshot
+export type DocumentReference = firebase.firestore.DocumentReference
 export type FirestoreError = firebase.firestore.FirestoreError
+export type Timestamp = firebase.firestore.Timestamp
