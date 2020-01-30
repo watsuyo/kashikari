@@ -7,7 +7,7 @@ import { Item } from '~/types/store/item'
  * ユーザー追加
  *
  * @param userId
- * @param address
+ * @param email
  */
 export async function addUser (userId: string, email?: string | null) {
   const docRef = Firestore.collection('users').doc(userId)
