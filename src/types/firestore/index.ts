@@ -29,7 +29,7 @@ export interface ItemData {
   price: number
   lateFee: number
   lendingPeriod: number
-  status: number
+  isPublic: boolean
   userRef: DocumentReference
   deliveryMethodRefs: DocumentReference[]
   categoryRef: DocumentReference
