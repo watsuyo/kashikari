@@ -1,6 +1,28 @@
-import { Firestore } from '~/plugins/firebase'
+import { Firestore, Timestamp } from '~/plugins/firebase'
 import { User } from '~/types/store/user'
 import { UserData } from '~/types/firestore'
+import { Item } from '~/types/store/item'
+
+/**
+ * ユーザー追加
+ *
+ * @param userId
+ * @param email
+ */
+export async function addUser (userId: string, email?: string | null) {
+  const docRef = Firestore.collection('users').doc(userId)
+  const doc = await docRef.get()
+  if (!doc.exists) {
+    // guestの場合userId以外は全てnullableであるため
+    return docRef.set({
+      email: email || '',
+      // name: name || '',
+      termVersion: 1,
+      createdAt: Timestamp.now(),
+      updatedAt: Timestamp.now()
+    })
+  }
+}
 
 /**
  * ユーザー取得
@@ -9,23 +31,40 @@ import { UserData } from '~/types/firestore'
  */
 export async function getUser (userId: string): Promise<User> {
   const userDoc = await Firestore.collection('users').doc(userId).get()
-  const user = userDoc.data() as UserData
+  const userData = userDoc.data() as UserData
 
-  const address = user.address !== undefined ? {
-    zipcode: (user.address.zipcode !== undefined) ? user.address.zipcode : '',
-    region: (user.address.region !== undefined) ? user.address.region : '',
-    locality: (user.address.locality !== undefined) ? user.address.locality : '',
-    streetAddress: (user.address.streetAddress !== undefined) ? user.address.streetAddress : '',
-    extendedAddress: (user.address.extendedAddress !== undefined) ? user.address.extendedAddress : ''
+  const address = userData.address !== undefined ? {
+    zipcode: (userData.address.zipcode !== undefined) ? userData.address.zipcode : '',
+    region: (userData.address.region !== undefined) ? userData.address.region : '',
+    locality: (userData.address.locality !== undefined) ? userData.address.locality : '',
+    streetAddress: (userData.address.streetAddress !== undefined) ? userData.address.streetAddress : '',
+    extendedAddress: (userData.address.extendedAddress !== undefined) ? userData.address.extendedAddress : ''
   } : null
+
+  const followRefs = userData.follows
+  const follows = await Promise.all(followRefs.map(async (followRef) => {
+    const followDoc = await followRef.get()
+    const deliveryMethodData = followDoc.data() as User
+    return deliveryMethodData
+  }))
+
+  const itemFavoriteRefs = userData.itemFavorites
+  const itemFavorites = await Promise.all(itemFavoriteRefs.map(async (itemFavoriteRef) => {
+    const itemFavoriteDoc = await itemFavoriteRef.get()
+    const itemFavoriteData = itemFavoriteDoc.data() as Item
+    return itemFavoriteData
+  }))
 
   return {
     id: userDoc.id,
-    firstName: user.firstName,
-    lastName: user.lastName,
-    email: user.email,
+    firstName: userData.firstName,
+    lastName: userData.lastName,
+    email: userData.email,
     address,
-    createdAt: user.createdAt,
-    updatedAt: user.updatedAt
+    follows,
+    itemFavorites,
+    userIconImageUrl: userData.userIconImageUrl,
+    createdAt: userData.createdAt,
+    updatedAt: userData.updatedAt
   }
 }

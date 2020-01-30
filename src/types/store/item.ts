@@ -1,17 +1,33 @@
-import firebase from 'firebase'
-import { UserData } from '../firestore/index'
+import { Timestamp } from '../firestore/index'
 
 export interface Item {
   id: string
   name: string
   description: string
+  atention: string
+  warranty: string
   mainImageUrl: string
   subImageUrls: string[]
   price: number
-  user: UserData
-  status: number
-  createdAt?: firebase.firestore.Timestamp
-  updatedAt?: firebase.firestore.Timestamp
+  lateFee: number
+  lendingPeriod: number
+  userName: string,
+  userIconImageUrl: string,
+  deliveryMethods: DeliveryMethod[]
+  category: Category
+  isPublic: boolean
+  createdAt?: Timestamp
+  updatedAt?: Timestamp
+}
+
+export interface DeliveryMethod {
+  index: number
+  method: string
+}
+
+export interface Category {
+  index: number
+  category: string
 }
 
 export interface State {

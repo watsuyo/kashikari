@@ -29,27 +29,13 @@ export interface RootMutations {
 }
 
 export interface Actions {
-  // createAnonymousUser,
-  // deleteAnonymousUser,
-  createUserWithEmailAndPassword: { email: string, password: string }
-  authUserWithEmailAndPassword: { email: string, password: string }
-  // authUserWithGoogle
-  // authUserWithFacebook
-  // signOut
-  // updateEmail
-  // updatePassword
+  authUserWithGoogle: any
+  signOut: any
 }
 
 export interface RootActions {
-  // 'auth/createAnonymousUser': Actions['createAnonymousUser']
-  // 'auth/deleteAnonymousUser': Actions['deleteAnonymousUser']
-  'auth/createUserWithEmailAndPassword': Actions['createUserWithEmailAndPassword']
-  'auth/authUserWithEmailAndPassword': Actions['authUserWithEmailAndPassword']
-  // 'auth/authUserWithGoogle': Actions['authUserWithGoogle']
-  // 'auth/authUserWithFacebook': Actions['authUserWithFacebook']
-  // 'auth/signOut': Actions['signOut']
-  // 'auth/updateEmail': Actions['updateEmail']
-  // 'auth/updatePassword': Actions['updatePassword']
+  'auth/authUserWithGoogle': Actions['authUserWithGoogle']
+  'auth/signOut': Actions['signOut']
 }
 
 export type AuthStoreContext = ExActionContext<

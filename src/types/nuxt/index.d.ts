@@ -2,7 +2,7 @@ import Vue from 'vue'
 import * as Vuex from 'vuex'
 import * as Express from 'express'
 import VueRouter, { Route } from 'vue-router'
-import '@types/express-session'
+import '@types/express-__session'
 
 // augment typings of NodeJS.Process
 import './process'
