@@ -36,7 +36,7 @@ async function buildItemObject (itemDoc: DocumentSnapshot): Promise<Item> {
     userIconImageUrl,
     deliveryMethods,
     category: categoryData,
-    status: itemData.status,
+    isPublic: itemData.isPublic,
     createdAt: itemData.createdAt,
     updatedAt: itemData.updatedAt
   }
