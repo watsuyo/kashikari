@@ -15,7 +15,7 @@ export interface Item {
   userIconImageUrl: string,
   deliveryMethods: DeliveryMethod[]
   category: Category
-  status: number
+  isPublic: boolean
   createdAt?: Timestamp
   updatedAt?: Timestamp
 }
