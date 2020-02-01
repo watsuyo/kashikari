@@ -1,5 +1,14 @@
 <template>
-  <div>
+  <form>
+
+    <!-- 画像選択 -->
+    <div class="thumbnail container">
+      <div>
+        <span>①</span>
+        <img src="" alt="">
+      </div>
+    </div>
+
     <div class="itemInfo">
       <div>
         <div class="itemInfo__name">
@@ -8,16 +17,12 @@
         <input type="text" placeholder="入力してください">
       </div>
 
-      <Divider section />
-
       <div>
         <div class="itemInfo__category">
           カテゴリ
         </div>
         <Select v-bind:object="category"></Select>
       </div>
-
-      <Divider section />
 
       <div>
         <div class="itemInfo__size">
@@ -26,8 +31,6 @@
         <input type="text" placeholder="入力してください">
       </div>
 
-      <Divider section />
-
       <div>
         <div class="itemInfo__description">
           説明
@@ -35,16 +38,12 @@
         <textarea placeholder="商品のブランドや色、状態などを書くと伝わりやすいです。"></textarea>
       </div>
 
-      <Divider section />
-
       <div>
         <div class="itemInfo__attention">
           注意事項(任意)
         </div>
         <textarea placeholder="気をつけて欲しいことや返却時の希望がある場合に記入してください。"></textarea>
       </div>
-
-      <Divider section />
     </div>
 
     <div class="itemOptionInfo">
@@ -56,16 +55,12 @@
         <input type="radio" name="deliveryMethod" value="郵送">
       </div>
 
-      <Divider section />
-
       <div>
         <div class="itemOptionInfo__day-limit">
           日数制限
         </div>
         <input type="text" placeholder="入力してください">
       </div>
-
-      <Divider section />
 
       <div>
         <div class="itemOptionInfo__loan-price">
@@ -74,16 +69,12 @@
         <input type="text" placeholder="入力してください">
       </div>
 
-      <Divider section />
-
       <div>
         <div class="itemOptionInfo__lost">
           紛失・破損時
         </div>
         <input type="text" placeholder="入力してください">
       </div>
-
-      <Divider section />
 
       <div>
         <div class="itemOptionInfo__arrears-funds">
@@ -96,18 +87,17 @@
     <Button space-m>
       貸し出す
     </Button>
-  </div>
+  </form>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import Button from '~/components/atoms/Button.vue'
-import Divider from '~/components/atoms/Divider.vue'
 import Select from '~/components/atoms/Select.vue'
 
 export default Vue.extend({
   components: {
-    Button, Divider, Select
+    Button, Select
   },
   data () {
     return {
